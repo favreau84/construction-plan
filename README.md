@@ -16,6 +16,7 @@ npm run dev
 ## Vérification et compilation
 
 ```sh
+npm test
 npm run build
 npm run preview
 ```
@@ -42,7 +43,11 @@ Les PNG originaux ne sont pas inclus. Les JPEG sont des copies orientées selon 
 
 ## Lecture et limites
 
-La marche va de gauche à droite à l’écran. La chaussée est en haut (à gauche du marcheur), le trottoir en bas (à droite). Le passage piéton traverse perpendiculairement à la bordure. L’œil affiche une projection et l’icône image ouvre la photo sans redressement.
+La marche va de gauche à droite à l’écran. La chaussée est en haut (à gauche du marcheur), le trottoir en bas (à droite). Le passage piéton traverse perpendiculairement à la bordure. La liste à gauche et les numéros du plan partagent la sélection. Clic : ouvrir une photo ; Maj + clic : ajouter ou retirer une photo. Le volet droit affiche l’image active, avec une colonne de vignettes pour une sélection multiple.
+
+La molette zoome autour du pointeur sur le plan et sur la photo ; glisser déplace la vue. Les boutons +/− et ajuster offrent une alternative. Échap ferme le volet. Un seul bouton affiche ou masque toutes les projections, dont l’opacité se règle globalement.
+
+Les points singuliers ouvrent leurs photos associées et affichent une infobulle au-dessus du point. A2 ouvre par défaut sa photo de référence (IMG_6596).
 
 Le tracé est une interprétation manuelle, pas un relevé topographique. Les stations, dimensions et l’arrondi final restent estimés ; la largeur de travail supposée est d’environ 3 m. Le GPS des photos est insuffisant pour une implantation précise et la première position est aberrante.
 
