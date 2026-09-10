@@ -16,9 +16,8 @@ export default function App(){
  function fit(){const el=map.ref.current;if(!el)return;const available=el.clientWidth-(selection.open&&el.clientWidth>760?Math.min(el.clientWidth*.49,680):0);const scale=Math.max(.15,Math.min((available-50)/1550,(el.clientHeight-140)/450,1.8));map.setCamera({scale,x:(available-1680*scale)/2,y:(el.clientHeight-560*scale)/2});}
  useEffect(()=>{const el=map.ref.current;if(!el)return;const scale=Math.max(.15,Math.min((el.clientWidth-50)/1550,(el.clientHeight-140)/450,1.8));map.setCamera({scale,x:(el.clientWidth-1680*scale)/2,y:(el.clientHeight-560*scale)/2});},[]);
  useEffect(()=>{const close=(e:KeyboardEvent)=>{if(e.key==='Escape')dispatch({type:'close'});};window.addEventListener('keydown',close);return()=>window.removeEventListener('keydown',close)},[]);
- function reveal(index:number){const el=map.ref.current;if(!el)return;const available=el.clientWidth>760?el.clientWidth-Math.min(el.clientWidth*.49,680):el.clientWidth;map.setCamera(c=>({...c,x:available*.46-(X0+stations[index]*U+50)*c.scale}));}
- function select(index:number,additive=false){dispatch({type:'select',photo:index,additive});if(!additive)reveal(index);}
- function selectFeature(f:typeof features[number]){dispatch({type:'feature',id:f.id,photos:f.photos,reference:f.referencePhoto??f.photos[0]});reveal(f.referencePhoto??f.photos[0]);}
+ function select(index:number,additive=false){dispatch({type:'select',photo:index,additive});}
+ function selectFeature(f:typeof features[number]){dispatch({type:'feature',id:f.id,photos:f.photos,reference:f.referencePhoto??f.photos[0]});}
  const transform=`translate(${map.camera.x}px,${map.camera.y}px) scale(${map.camera.scale})`;
  return <main className="app">
   <header className="app-header"><div className="brand"><MapIcon size={25}/><div><h1>Le trottoir</h1><span>Relevé photographique · 10 septembre 2026</span></div></div><span className="status"><i/> Plan interprété</span></header>
