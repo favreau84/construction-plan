@@ -1,5 +1,5 @@
 import {useEffect,useReducer,useState} from 'react';
-import {Eye,EyeOff,Map as MapIcon,Maximize,Minus,Plus,X,Images,Check} from 'lucide-react';
+import {Eye,EyeOff,Map as MapIcon,Maximize,Minus,Plus,X,Images} from 'lucide-react';
 import {stations,features,notes} from './geometry';
 import metadata from './photos.json';
 import {photoName,photoURL} from './photos';
@@ -23,7 +23,7 @@ export default function App(){
   <header className="app-header"><div className="brand"><MapIcon size={25}/><div><h1>Le trottoir</h1><span>Relevé photographique · 10 septembre 2026</span></div></div><span className="status"><i/> Plan interprété</span></header>
   <div className="workspace">
    <aside className="photo-sidebar" aria-label="Liste des photos"><div className="sidebar-heading"><h2>Photos <span>19</span></h2><p>Clic pour ouvrir · Maj + clic pour combiner</p></div>
-    <div className="photo-list">{metadata.map((p,i)=><button key={p.name} className={`photo-row ${selection.photos.includes(i)?'selected':''} ${selection.active===i?'current':''}`} aria-label={`Sélectionner ${photoName(i)}`} aria-pressed={selection.photos.includes(i)} onClick={e=>select(i,e.shiftKey)}><img src={photoURL(i)} alt="" loading="lazy"/><span className="row-copy"><strong><span>{String(i+1).padStart(2,'0')}</span> {p.name}</strong><small>{notes[i]}</small></span>{selection.photos.includes(i)&&<Check size={16}/>}</button>)}</div>
+    <div className="photo-list">{metadata.map((p,i)=><button key={p.name} className={`photo-row ${selection.photos.includes(i)?'selected':''} ${selection.active===i?'current':''}`} aria-label={`Sélectionner ${photoName(i)}`} aria-description={notes[i]} title={`${p.name}.jpg\n${notes[i]}`} aria-pressed={selection.photos.includes(i)} onClick={e=>select(i,e.shiftKey)}><img src={photoURL(i)} alt="" loading="lazy"/><span className="card-number">{String(i+1).padStart(2,'0')}</span></button>)}</div>
     <div className="sidebar-footer"><span>{selection.photos.length} photo{selection.photos.length>1?'s':''} sélectionnée{selection.photos.length>1?'s':''}</span><details><summary>Précision du plan</summary><p>Tracé et dimensions estimés. Les projections ne constituent pas une orthomosaïque calibrée. A2 est recalé sur la photo 10.</p></details></div>
    </aside>
    <section className="plan-panel" aria-label="Plan interactif">
