@@ -5,12 +5,13 @@ export const PlanDrawing=memo(function PlanDrawing({showPhotos}:{showPhotos:bool
  <rect width="1680" height="640" fill="url(#grid)"/>
  <g transform="translate(0 560) scale(1 -1)">
  <path d="M80 110H1280V184H80Z" fill="url(#grass)"/>
- <path d="M80 286H1450V422H80Z" fill="#e0e6ed"/>
- <path d="M80 184H1370Q1480 184 1480 280H80Z" fill="#f8fbfe" stroke="#acc0cd"/>
- <path d="M80 280H1480Q1480 184 1370 184" fill="none" stroke="#087eae" strokeWidth="3"/>
- <path d="M80 287H1487Q1487 177 1370 177" fill="none" stroke="#334a5c" strokeWidth="2"/>
- <path d="M80 276H1475" stroke="#b8c9d4"/>
- {Array.from({length:42},(_,i)=><path key={i} d={`M${100+i*32} 280v7`} stroke="#536b7a"/>)}
+ <path d="M80 286H1280V110H1550V422H80Z" fill="#e0e6ed"/>
+ <path d="M80 184H1480Q1480 280 1370 280H80Z" fill="#f8fbfe" stroke="#acc0cd"/>
+ <path d="M80 280H1370Q1480 280 1480 184H1280" fill="none" stroke="#087eae" strokeWidth="3"/>
+ <path d="M80 287H1370Q1487 287 1487 184V177H1280" fill="none" stroke="#334a5c" strokeWidth="2"/>
+ <path d="M80 276H1370Q1475 276 1475 188H1280" fill="none" stroke="#b8c9d4"/>
+ {Array.from({length:40},(_,i)=><path key={i} d={`M${100+i*32} 280v7`} stroke="#536b7a"/>)}
+ {[.15,.35,.55,.75,.9].map(t=>{const x=1370+110*(2*t-t*t),y=280-96*t*t;const outerX=1370+117*(2*t-t*t),outerY=287-103*t*t;return <path key={t} d={`M${x} ${y}L${outerX} ${outerY}`} stroke="#536b7a"/>})}
  <path d="M80 184H1270" stroke="#769c89" strokeWidth="2"/>
  {[3,10,17,24,30,35].map(x=><path key={x} d={`M${X+x*U} 184V276`} stroke="#b6c8d4" strokeDasharray="3 3"/>)}
  {[0,1,2].map(i=><rect key={i} x="225" y={300+i*36} width="96" height="18" fill="white" stroke="#aebcc7"/>)}
